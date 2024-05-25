@@ -4,6 +4,7 @@ import 'package:task2/every_client_special.dart';
 import 'package:task2/keep_it_clean.dart';
 import 'package:task2/otp_page.dart';
 import 'package:task2/otp_verification_page.dart';
+import 'package:task2/pop_up_page.dart';
 import 'package:task2/sign_in.dart';
 
 void main() {
@@ -19,8 +20,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: SafeArea(child: Scaffold(body: EmbraceTechnology())),
+      home: Scaffold(
+       body:
+      //    EveryClientSpecial()
+      //   EmbraceTechnology()
+      //   KeepClean()
+      //   SignIN()
+      //   OTPPage()
+      //   OTPVerficationPage()
+        POPUPPage()
+      ),
+
     );
+
   }
 }
 

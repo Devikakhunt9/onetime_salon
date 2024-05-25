@@ -6,24 +6,31 @@ class KeepClean extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  Container(
       color: Colors.blue.shade900,
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          Image.asset(
-            'assets/images/Mask_group_2.png',
-            // Replace with your actual image path
-            fit: BoxFit.fitWidth,
-            // height: 250,
-            width: double.infinity, // Adjust width as needed
+          ClipRect(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              heightFactor: .92, // Adjust this factor to control how much of the bottom part is shown
+              child: Image.asset(
+                'assets/images/Mask_group_2.png',
+                fit: BoxFit.fill,
+                height: 350,
+                width: double.infinity, // Adjust width as needed
+              ),
+            ),
           ),
-          Center(
+          Expanded(
+            flex: 5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 180.0),
+                  padding: const EdgeInsets.all(28.0),
                   child: Text(
                     "Keep it Clean",
                     style: TextStyle(
@@ -50,9 +57,9 @@ class KeepClean extends StatelessWidget {
                       padding: const EdgeInsets.all(2.0),
                       child: Container(
 
-                        height: 15,
-                        width: 15,
-                        decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
+                          height: 15,
+                          width: 15,
+                          decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
 
                       ),
                     ),

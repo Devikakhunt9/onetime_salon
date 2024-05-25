@@ -9,23 +9,30 @@ class EveryClientSpecial extends StatelessWidget {
     return Container(
       color: Colors.blue.shade900,
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          Image.asset(
-            'assets/images/Mask_group.png',
-            // Replace with your actual image path
-            fit: BoxFit.fill,
-            // height: 250,
-            width: double.infinity, // Adjust width as needed
+          ClipRect(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              heightFactor: .92, // Adjust this factor to control how much of the bottom part is shown
+              child: Image.asset(
+                'assets/images/Mask_group.png',
+                fit: BoxFit.fill,
+                height: 350,
+                width: double.infinity, // Adjust width as needed
+              ),
+            ),
           ),
-          Center(
+          Expanded(
+            flex: 5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 180.0),
+                  padding: const EdgeInsets.all(28.0),
                   child: Text(
-                    "Every Client is Special ",
+                    "Every Client is Special",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -6,52 +7,42 @@ class SignIN extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          color: Colors.indigo.shade900,
-          height: double.infinity,
-          width: double.infinity,
-        ),
-        Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(900),
-                      bottomRight: Radius.circular(900))),
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(250),
-                    bottomLeft: Radius.circular(250)),
-                child: Image.asset(
-                  'assets/images/Create_New_Account.png',
-                  // Replace with your actual image path
-                  fit: BoxFit.fitWidth,
-                  height: 200,
-                  width: double.infinity, // Adjust width as needed
-                ),
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double imageHeight = screenHeight / 2.5;
+    return Container(
+      color: Colors.blue.shade900,
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ClipRect(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              heightFactor: .7,
+              // Adjust this factor to control how much of the bottom part is shown
+              child: Image.asset(
+                'assets/images/Mask_group_2.png',
+                fit: BoxFit.fill,
+                height: imageHeight,
+                width: double.infinity, // Adjust width as needed
               ),
-              height: 200,
-              width: double.infinity,
             ),
-            Center(
+          ),
+          Expanded(
+            flex: 5,
+            child: Container(
+              margin: EdgeInsets.only(top: 20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: Text(
-                      "Create New Account",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
+                  Text(
+                    "Create New Account",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 50, right: 50),
+                    margin: EdgeInsets.only(left: 50, right: 50, top: 15),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -85,6 +76,8 @@ class SignIN extends StatelessWidget {
                                         BorderSide(color: Colors.white)),
                                 fillColor: Colors.white,
                                 hintText: "Email or Phone number",
+                                hintStyle:
+                                    TextStyle(fontSize: 12, color: Colors.grey),
                                 filled: true,
                                 focusedBorder: OutlineInputBorder(
                                     borderSide:
@@ -131,6 +124,7 @@ class SignIN extends StatelessWidget {
                                 fillColor: Colors.white,
                                 hintText: "Type Password",
                                 hintStyle: TextStyle(
+                                  fontSize: 12,
                                   fontFamily: 'Itim',
                                   color: Colors.grey,
                                 ),
@@ -182,6 +176,7 @@ class SignIN extends StatelessWidget {
                                 fillColor: Colors.white,
                                 hintText: "Type Password",
                                 hintStyle: TextStyle(
+                                  fontSize: 12,
                                   fontFamily: 'Itim',
                                   color: Colors.grey,
                                 ),
@@ -197,31 +192,38 @@ class SignIN extends StatelessWidget {
                             ),
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Checkbox(
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                    style: BorderStyle.solid,
-                                    color: Colors.white, // custom border color
-                                    // width: 2.0, // custom border width
-                                  ),
-                                  borderRadius: BorderRadius.circular(4.0),
+                              Transform.scale(
+                                scale: 0.7, // Scale the checkbox size
+                                child: Checkbox(
+                                  side: BorderSide(color: Colors.white),
+                                  shape: BeveledRectangleBorder(),
+                                  value: false,
+                                  activeColor: Colors.white,
+                                  checkColor: Colors.blue,
+                                  onChanged: (value) {},
                                 ),
-
-                                activeColor: Colors.blue,
-                                checkColor: Colors.white,
-                                value: false,
-                                onChanged: (value) {
-                                  //   setState(() {
-                                  //     isChecked = value!;
-                                  //   });
-                                },
                               ),
-                              Text(
-                                "I accept the polic and terms",
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.white),
-                              )
+                              RichText(
+                                text: TextSpan(
+                                  text: 'I accept the ',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.white),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: 'policy and terms',
+                                      style: TextStyle(
+                                          fontSize: 12, color: Colors.lightBlue),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Handle policy tap
+                                          print('Policy tapped');
+                                        },
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                           Container(
@@ -256,6 +258,30 @@ class SignIN extends StatelessWidget {
                             // padding: EdgeInsets.all(8),
                             // margin: EdgeInsets.only(left: 18, right: 18),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 18.0),
+                            child: RichText(
+                              text: TextSpan(
+                                text: 'Already have account? ',
+                                style: TextStyle(
+                                    fontSize: 12, color: Colors.white),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Sign in',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.blue,
+                                        decoration: TextDecoration.underline),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        // Handle policy tap
+                                        print('Sign in tapped');
+                                      },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -263,9 +289,9 @@ class SignIN extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ],
+          )
+        ],
+      ),
     );
   }
 }

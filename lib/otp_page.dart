@@ -1,150 +1,190 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/services.dart';
 
-class OTPPage extends StatelessWidget {
+class OTPPage extends StatefulWidget {
   const OTPPage({super.key});
 
   @override
+  State<OTPPage> createState() => _OTPPageState();
+}
+
+class _OTPPageState extends State<OTPPage> {
+  String? selectedValue  ;
+
+  final List<String> items = ['O1', 'O2', 'O3'];
+
+  @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          color: Colors.indigo.shade900,
-          height: double.infinity,
-          width: double.infinity,
-        ),
-        Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(190),
-                      bottomRight: Radius.circular(190))),
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(190),
-                    bottomLeft: Radius.circular(190)),
-                child: Image.asset(
-                  'assets/images/Create_New_Account.png',
-                  // Replace with your actual image path
-                  fit: BoxFit.fitWidth,
-                  height: 250,
-                  width: double.infinity, // Adjust width as needed
-                ),
+    selectedValue = 'O1';
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double imageHeight = screenHeight / 2.5;
+    return Container(
+      color: Colors.blue.shade900,
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ClipRect(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              heightFactor: .7,
+              // Adjust this factor to control how much of the bottom part is shown
+              child: Image.asset(
+                'assets/images/Mask_group_2.png',
+                fit: BoxFit.fill,
+                height: imageHeight,
+                width: double.infinity, // Adjust width as needed
               ),
-              height: 250,
-              width: double.infinity,
             ),
-            Center(
+          ),
+          Expanded(
+            flex: 5,
+            child: Container(
+              margin: EdgeInsets.only(top: 20),
+              // color: Colors.yellow,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 18.0),
-                    child: Text(
-                      "Send OTP For Verification\nYour Account",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
+                  Text(
+                    "Send OTP For Verification\nYour Account",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 50, right: 50),
+                    // color: Colors.pink,
+                    margin: EdgeInsets.only(left: 50, right: 50, top: 15),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        children: [Padding(
-                          padding: const EdgeInsets.only(
-                            top: 5.0,
-                          ),
-                          child: TextFormField(
+                        children: [
 
-                            keyboardType: TextInputType.number,
-                            // controller: password,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "please Enter your password";
-                              }
-                              return null;
-                            },
-                            style: TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
-                            decoration: InputDecoration(
 
-                              prefixIcon: GestureDetector(
-                                child: true
-                                    ? Icon(Icons.flag)
-                                    : Icon(Icons.visibility),
-                                // onTap: () {
-                                //   setState(() {
-                                //     obsecuretxt = !obsecuretxt;
-                                //   });
-                                // },
-                              ),
+                          //dropdown
 
-                              fillColor: Colors.white,
-                              hintText: "Enter Your number",
-                              hintStyle: TextStyle(
-                                fontFamily: 'Itim',
-                                color: Colors.grey,
+
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 5.0, bottom: 15),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4.0),
+                                border: Border.all(color: Colors.white),
                               ),
-                              filled: true,
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: DropdownButtonFormField<String>(
+                                      value: selectedValue,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          selectedValue = newValue;
+                                        });
+                                      },
+                                      items: items.map((String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                      decoration: InputDecoration(
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        contentPadding: EdgeInsets.symmetric(vertical: 5,
+                                            horizontal: 10.0),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            bottomLeft: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      dropdownColor: Colors.white,
+                                      isDense: true,
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                  Text('|'),
+                                  Expanded(
+                                    flex: 3,
+                                    child: TextFormField(
+                                      // controller: textEditingController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: InputDecoration(
+                                        hintText: "Enter number",
+                                        hintStyle: TextStyle(
+                                          fontFamily: 'Itim',
+                                          color: Colors.grey,
+                                        ),
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(4.0),
+                                            bottomRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      style: TextStyle(color: Colors.black),
+                                      cursorColor: Colors.white,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            obscureText: true,
                           ),
-                        ),],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.only(top: 25,left: 50,right: 50),
-                    child: DecoratedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: InkWell(
-                          child: Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Text(
-                              "SEND OTP",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 15, color: Colors.black),
+                          //button
+                          Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.only(top: 25),
+                            child: DecoratedBox(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: InkWell(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Send OTP",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 15, color: Colors.black),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    // if (formkey.currentState!.validate()) {
+                                    //
+                                    //
+                                    // }
+                                  },
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                             ),
+                            // padding: EdgeInsets.all(8),
+                            // margin: EdgeInsets.only(left: 18, right: 18),
                           ),
-                          onTap: () {
-                            // if (formkey.currentState!.validate()) {
-                            //
-                            //
-                            // }
-                          },
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+
+                        ],
                       ),
                     ),
-                    // padding: EdgeInsets.all(8),
-                    // margin: EdgeInsets.only(left: 18, right: 18),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ],
+          )
+        ],
+      ),
     );
   }
 }
