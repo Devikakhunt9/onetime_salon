@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class EveryClientSpecial extends StatelessWidget {
-  const EveryClientSpecial({super.key});
+class KeepClean extends StatelessWidget {
+  const KeepClean({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  Container(
       color: Colors.blue.shade900,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -17,7 +17,7 @@ class EveryClientSpecial extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               heightFactor: .92, // Adjust this factor to control how much of the bottom part is shown
               child: Image.asset(
-                'assets/images/Mask_group.png',
+                'assets/images/Mask_group_2.png',
                 fit: BoxFit.fill,
                 height: 350,
                 width: double.infinity, // Adjust width as needed
@@ -32,7 +32,7 @@ class EveryClientSpecial extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(28.0),
                   child: Text(
-                    "Every Client is Special",
+                    "Keep it Clean",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -57,19 +57,9 @@ class EveryClientSpecial extends StatelessWidget {
                       padding: const EdgeInsets.all(2.0),
                       child: Container(
 
-                        height: 15,
-                        width: 15,
-                        decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
-
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Container(
-
                           height: 15,
                           width: 15,
-                          decoration:BoxDecoration(color: Colors.lightBlue.shade50,shape: BoxShape.circle)
+                          decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
 
                       ),
                     ),
@@ -80,6 +70,16 @@ class EveryClientSpecial extends StatelessWidget {
                           height: 15,
                           width: 15,
                           decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
+
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Container(
+
+                          height: 15,
+                          width: 15,
+                          decoration:BoxDecoration(color: Colors.lightBlue.shade50,shape: BoxShape.circle)
 
                       ),
                     ),

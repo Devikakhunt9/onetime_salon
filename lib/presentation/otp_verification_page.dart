@@ -33,25 +33,25 @@ class _OTPVerficationPageState extends State<OTPVerficationPage> {
     final double imageHeight = screenHeight / 2.5;
     return Container(
       color: Colors.blue.shade900,
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ClipRect(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              heightFactor: .7,
-              // Adjust this factor to control how much of the bottom part is shown
-              child: Image.asset(
-                'assets/images/Mask_group_2.png',
-                fit: BoxFit.fill,
-                height: imageHeight,
-                width: double.infinity, // Adjust width as needed
+      height: double.infinity,
+      child: SingleChildScrollView(
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ClipRect(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                heightFactor: .7,
+                // Adjust this factor to control how much of the bottom part is shown
+                child: Image.asset(
+                  'assets/images/Mask_group_2.png',
+                  fit: BoxFit.fill,
+                  height: imageHeight,
+                  width: double.infinity, // Adjust width as needed
+                ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Container(
+            Container(
               margin: EdgeInsets.only(top: 20),
               // color: Colors.yellow,
               child: Column(
@@ -71,7 +71,7 @@ class _OTPVerficationPageState extends State<OTPVerficationPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-
+            
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -257,7 +257,7 @@ class _OTPVerficationPageState extends State<OTPVerficationPage> {
                                         style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.white,
-
+            
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
@@ -266,15 +266,15 @@ class _OTPVerficationPageState extends State<OTPVerficationPage> {
                                           },
                                       ),
                                       TextSpan(
-
+            
                                         //seconds logic is pending
-
+            
                                         text: ' seconds',
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           fontSize: 15,
                                           color: Colors.white,
-
+            
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
@@ -328,9 +328,9 @@ class _OTPVerficationPageState extends State<OTPVerficationPage> {
                   ),
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

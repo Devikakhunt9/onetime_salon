@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:task2/embrace_technology.dart';
-import 'package:task2/every_client_special.dart';
-import 'package:task2/keep_it_clean.dart';
-import 'package:task2/otp_page.dart';
-import 'package:task2/otp_verification_page.dart';
-import 'package:task2/pop_up_page.dart';
-import 'package:task2/sign_in.dart';
+import 'package:task2/presentation/embrace_technology.dart';
+import 'package:task2/presentation/every_client_special.dart';
+import 'package:task2/presentation/swipeable.dart';
+import 'package:task2/presentation/keep_it_clean.dart';
+import 'package:task2/presentation/otp_page.dart';
+import 'package:task2/presentation/otp_verification_page.dart';
+import 'package:task2/presentation/pop_up_page.dart';
+import 'package:task2/presentation/sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,15 +21,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: Scaffold(
-       body:
-      //    EveryClientSpecial()
-      //   EmbraceTechnology()
-      //   KeepClean()
-      //   SignIN()
-      //   OTPPage()
-      //   OTPVerficationPage()
-        POPUPPage()
+      home: SafeArea(
+        child: Scaffold(
+         body:
+           // EveryClientSpecial()
+          // EmbraceTechnology()
+          // KeepClean()
+          // SignIN()
+          // OTPPage()
+          // OTPVerficationPage()
+          // POPUPPage()
+          HomeScreen()
+        ),
       ),
 
     );

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class KeepClean extends StatelessWidget {
-  const KeepClean({super.key});
+class EveryClientSpecial extends StatelessWidget {
+  const EveryClientSpecial({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       color: Colors.blue.shade900,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -17,7 +17,7 @@ class KeepClean extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               heightFactor: .92, // Adjust this factor to control how much of the bottom part is shown
               child: Image.asset(
-                'assets/images/Mask_group_2.png',
+                'assets/images/Mask_group.png',
                 fit: BoxFit.fill,
                 height: 350,
                 width: double.infinity, // Adjust width as needed
@@ -32,7 +32,7 @@ class KeepClean extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(28.0),
                   child: Text(
-                    "Keep it Clean",
+                    "Every Client is Special",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -57,9 +57,9 @@ class KeepClean extends StatelessWidget {
                       padding: const EdgeInsets.all(2.0),
                       child: Container(
 
-                          height: 15,
-                          width: 15,
-                          decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
+                        height: 15,
+                        width: 15,
+                        decoration:BoxDecoration(color: Colors.lightBlue.shade50,shape: BoxShape.circle)
 
                       ),
                     ),
@@ -69,7 +69,7 @@ class KeepClean extends StatelessWidget {
 
                           height: 15,
                           width: 15,
-                          decoration:BoxDecoration(color: Colors.lightBlue.shade50,shape: BoxShape.circle)
+                          decoration:BoxDecoration(color: Colors.blue,shape: BoxShape.circle)
 
                       ),
                     ),
